@@ -22,12 +22,10 @@ export default function Signup() {
     const [showPassword, setShowPassword] = useState(false);
     const router = useRouter();
 
-    const { user, isLoading, register } = useAuthStore();
+    const { isLoading, register } = useAuthStore();
 
     const handleSignup = async () => {
         const result = await register(username, email, password);
-        console.log(result);
-        console.log(username, email, password);
 
         if (!result.success)
             Alert.alert("Error", result.error || result.message);

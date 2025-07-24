@@ -10,7 +10,7 @@ export const useAuthStore = create((set) => ({
         set({ isLoading: true });
         try {
             const response = await fetch(
-                "https://bookora-server.onrender.com/api/auth/register",
+                "http://192.168.0.103:3001/api/auth/register",
                 {
                     method: "POST",
                     headers: {
@@ -36,6 +36,27 @@ export const useAuthStore = create((set) => ({
         } catch (error) {
             set({ isLoading: false });
             return { success: false, message: error.message };
+        }
+    },
+
+    checkAuth: async () => {
+        try {
+            const token = await AsyncStorage.getItem("token");
+            const userJson = await AsyncStorage.getItem("user");
+            const user = userJson ? JSON.parse(userJson) : null;
+            set({ token, user });
+        } catch (error) {
+            console.log("Auth check failed", error);
+        }
+    },
+
+    logout: async () => {
+        try {
+            await AsyncStorage.removeItem("token");
+            await AsyncStorage.removeItem("user");
+            set({ token: null, user: null });
+        } catch (error) {
+            console.log("Logout failed", error);
         }
     },
 }));
