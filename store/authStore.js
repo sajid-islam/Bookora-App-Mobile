@@ -10,7 +10,8 @@ export const useAuthStore = create((set) => ({
         set({ isLoading: true });
         try {
             const response = await fetch(
-                "http://192.168.0.103:3001/api/auth/register",
+                `http://${process.env.IP_ADDRESS}:3001/api/auth/register`,
+
                 {
                     method: "POST",
                     headers: {
@@ -43,7 +44,7 @@ export const useAuthStore = create((set) => ({
         set({ isLoading: true });
         try {
             const response = await fetch(
-                `http://${process.env.IP_ADDRESS}:3001/api/auth/login`,
+                `http://192.168.0.100:3001/api/auth/login`,
                 {
                     method: "POST",
                     headers: {
