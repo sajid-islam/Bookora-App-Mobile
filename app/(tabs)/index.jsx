@@ -22,7 +22,7 @@ export default function HomeScreen() {
     const [refreshing, setRefreshing] = useState(false);
     const [hasMore, setHasMore] = useState(false);
     const [page, setPage] = useState(1);
-    console.log(books);
+
     const fetchBooks = async (pageNum = 1, refresh = false) => {
         if (refresh) setRefreshing(true);
         else if (pageNum === 1) setLoading(true);
