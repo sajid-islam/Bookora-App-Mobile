@@ -16,6 +16,9 @@ import { useState } from "react";
 import { Image } from "expo-image";
 import * as ImagePicker from "expo-image-picker";
 import * as FileSystem from "expo-file-system";
+import { baseUrl } from "../../constants/api";
+import { useAuthStore } from "./../../store/authStore";
+import { useRouter } from "expo-router";
 
 export default function CreateScreen() {
     const [title, setTitle] = useState("");
@@ -24,6 +27,9 @@ export default function CreateScreen() {
     const [caption, setCaption] = useState("");
     const [loading, setLoading] = useState(false);
     const [imageBase64, setImageBase64] = useState("");
+
+    const { token } = useAuthStore();
+    const router = useRouter();
 
     const pickImage = async () => {
         try {
@@ -47,6 +53,7 @@ export default function CreateScreen() {
                 base64: true,
                 quality: 0.5,
             });
+
             if (!result.canceled) {
                 setImage(result.assets[0].uri);
 
@@ -69,7 +76,53 @@ export default function CreateScreen() {
         }
     };
 
-    const handleSubmit = () => {};
+    const handleSubmit = async () => {
+        if (!title || !caption || !imageBase64 || !rating) {
+            Alert.alert("Error", "All field are required");
+            return;
+        }
+
+        try {
+            setLoading(true);
+            const uriParts = image.split(".");
+            const fileType = uriParts[uriParts.length - 1];
+            const imageType = fileType
+                ? `image/${fileType.toLocaleLowerCase()}`
+                : "image/jpeg";
+            const imageDataUrl = `data:${imageType};base64,${imageBase64}`;
+            const response = await fetch(`${baseUrl}/book`, {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer${token}`,
+                    "Content-Type": "application/json",
+                },
+
+                body: JSON.stringify({
+                    title,
+                    caption,
+                    rating: rating.toString(),
+                    image: imageDataUrl,
+                }),
+            });
+
+            const data = await response.json();
+            if (!response.ok) {
+                throw new Error(data.message || "Something went wrong");
+            }
+            Alert.alert("Success", "Your book recommendation has been posted");
+            setTitle("");
+            setCaption("");
+            setImage("");
+            setRating(3);
+            setImageBase64("");
+            router.push("/");
+        } catch (error) {
+            console.log("Error creating post", error);
+            Alert.alert("Error", error.message || "Something went wrong");
+        } finally {
+            setLoading(false);
+        }
+    };
 
     const RenderRatingPicker = () => {
         const star = [];
