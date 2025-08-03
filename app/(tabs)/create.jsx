@@ -93,7 +93,7 @@ export default function CreateScreen() {
             const response = await fetch(`${baseUrl}/book`, {
                 method: "POST",
                 headers: {
-                    Authorization: `Bearer${token}`,
+                    Authorization: `Bearer ${token}`,
                     "Content-Type": "application/json",
                 },
 
