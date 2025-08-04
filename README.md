@@ -1,50 +1,49 @@
-# Welcome to your Expo app 👋
+# 📚 Bookora - Book Recommendation App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Bookora is a simple mobile app built with **React Native + Expo** that allows users to share and manage personal book recommendations. Users can add and delete their own suggestions and explore recommendations from others.
 
-## Get started
+---
 
-1. Install dependencies
+## ✨ Features
 
-   ```bash
-   npm install
-   ```
+-   ✅ Add a new book recommendation (with title, rating, caption, image)
+-   🗑️ Delete your own recommendations
+-   📃 View all your shared recommendations
+-   🌍 Discover books recommended by other users
+-   🔐 Authentication system (with secure token storage)
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
+## 📲 Download APK
 
-In the output, you'll find options to open the app in a
+You can download and try the latest APK:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+👉 [Download Bookora APK](https://expo.dev/accounts/sajidislam/projects/bookora-app-mobile/builds/c8c5dd5b-9f50-4779-b02e-e35359054b78)
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+---
 
-## Get a fresh project
+## 🖼️ Screenshots
 
-When you're ready, run:
+| Home Screen                                           | Add Recommendation                                      | Profile Screen                                           |
+| ----------------------------------------------------- | ------------------------------------------------------- | -------------------------------------------------------- |
+| ![screenshot-1](./assets/screenshots/home-screen.png) | ![screenshot-2](./assets/screenshots/create-screen.png) | ![screenshot-3](./assets/screenshots/profile-screen.png) |
+
+---
+
+## 🔗 Backend Repository
+
+📂 GitHub: [Bookora Backend](https://github.com/sajid-islam/Bookora-App-Backend)
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
 
 ```bash
-npm run reset-project
+git clone https://github.com/sajid-islam/Bookora-App-Mobile
+cd Bookora-App-Mobile
+npm install
+npx expo start
+
 ```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
