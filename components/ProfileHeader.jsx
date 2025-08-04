@@ -7,7 +7,7 @@ import { FormattedDate } from "./../lib/utils";
 
 export default function ProfileHeader() {
     const { user } = useAuthStore();
-    console.log(user);
+
     return (
         <View style={styles.profileHeader}>
             <Image
